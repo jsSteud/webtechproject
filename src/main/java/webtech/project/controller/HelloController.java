@@ -1,4 +1,4 @@
-package webtech.project;
+package webtech.project.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +8,7 @@ public class HelloController {
 
     @GetMapping("/")
     public String index() {
-        return "Greetings to Prof. Wider!";
+        return "Greetings to";
     }
 
 }
