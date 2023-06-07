@@ -13,4 +13,7 @@ public interface Training {
     public String getComment();
     public void setComment(String newComment);
 
+    public boolean getType();
+
+
 }

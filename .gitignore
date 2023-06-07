@@ -25,3 +25,6 @@ hs_err_pid*
 ###h2 DB###
 *mv.db
 *.trace.db
+
+###env###
+.env
