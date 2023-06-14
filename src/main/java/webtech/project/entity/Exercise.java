@@ -204,10 +204,24 @@ public class Exercise implements Training {
         return Objects.hash(this.id, this.reps, this.sets, this.comment, this.name, this.weight);
     }
 
-    //not completed
     @Override
     public String toString() {
-        return "Employee{" + "id=" + this.id + ", name='" + this.name + '\'' + ", comment='" + this.comment + '\'' + ", weight= " + this.weight + '}';
+        return "Exercise{" +
+                "id=" + id +
+                ", reps=" + reps +
+                ", sets=" + sets +
+                ", weight=" + weight +
+                ", name='" + name + '\'' +
+                ", comment='" + comment + '\'' +
+                ", mo=" + mo +
+                ", di=" + di +
+                ", mi=" + mi +
+                ", don=" + don +
+                ", fr=" + fr +
+                ", sa=" + sa +
+                ", so=" + so +
+                ", planed=" + planed +
+                ", isMachineType=" + isMachineType +
+                '}';
     }
-
 }

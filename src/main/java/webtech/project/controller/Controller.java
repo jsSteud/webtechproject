@@ -40,9 +40,18 @@ public class Controller {
     public Exercise updateExersice(@PathVariable Long id, @RequestBody Exercise training){
         return serviceMT.updateExercise(id, training);
     }
+    @PutMapping("/remove/{id}")
+    public Exercise removeExercise(@PathVariable Long id, @RequestBody Exercise training){
+        return serviceMT.removeExercise(id, training);
+    }
     @DeleteMapping("/machinetraining/{id}")
     public void deleteMachineTraining(@PathVariable Long id){
         serviceMT.deleteById(id);
     }
 
+    //TODO: Authoriazation needed
+    @DeleteMapping("/deleteAll")
+    public void deleteAll(){
+        serviceMT.deleteAll();
+    }
 }
