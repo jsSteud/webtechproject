@@ -34,11 +34,11 @@ public class Exercise implements Training {
 
 
 
-    public Exercise(int reps, int sets, int weight, String machineName, String comment, boolean mo, boolean di, boolean mi, boolean don, boolean fr, boolean sa, boolean so, boolean planed) {
+    public Exercise(int reps, int sets, int weight, String name, String comment, boolean mo, boolean di, boolean mi, boolean don, boolean fr, boolean sa, boolean so, boolean planed, boolean isMachineType) {
         this.reps = reps;
         this.sets = sets;
         this.weight = weight;
-        this.name = machineName;
+        this.name = name;
         this.comment = comment;
         this.mo = mo;
         this.di = di;
@@ -48,6 +48,7 @@ public class Exercise implements Training {
         this.sa = sa;
         this.so = so;
         this.planed = planed;
+        this.isMachineType = isMachineType;
     }
 
     public Exercise() {}
