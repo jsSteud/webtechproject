@@ -26,5 +26,5 @@ tasks.named('test') {
 }
 
 ask wrapper(type: Wrapper) {
-	gradleVersion = '4.1'
+	gradleVersion = '8.1.1'
 }
