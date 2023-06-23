@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import webtech.project.entity.Account;
 import webtech.project.entity.Exercise;
+import webtech.project.repository.AccountRepo;
 import webtech.project.service.TrainingWithMachineService;
 
 import java.util.ArrayList;
@@ -16,20 +18,25 @@ public class Controller {
     @Autowired
     TrainingWithMachineService serviceMT;
 
+
     Logger logger = LoggerFactory.getLogger(Controller.class);
 
     @GetMapping("/allsessions")
-    public List<Object> gettAll(){
-        List<Exercise> MTSessions = serviceMT.getAll();
-        List<Object> merge = new ArrayList<>();
-
-        merge.addAll(MTSessions);
-        return merge;
+    public List<Exercise> gettAll(@RequestHeader String token){
+        return serviceMT.getAll(token);
     }
 
+    @PutMapping("/addExercise")
+    public Account addExerciseToAccount(@RequestHeader String token, @RequestBody Exercise exercise) {
+      return serviceMT.addExercisetoAccount(exercise, token);
+    }
+
+    @PostMapping("/account")
+    public Account createAccount(@RequestBody Account account) {return serviceMT.createAccount(account);}
+
     @GetMapping("/machinetraining")
-    public List<Exercise> getAllMachineTraining() {
-        return serviceMT.getAll();
+    public List<Exercise> getAllMachineTraining(@RequestHeader String token) {
+        return serviceMT.getAll(token);
     }
 
     @PostMapping("/machinetraining")
@@ -53,6 +60,11 @@ public class Controller {
     @DeleteMapping("/deleteAll")
     public void deleteAll(){
         serviceMT.deleteAll();
+    }
+
+    @GetMapping("/login")
+    public String getToken(@RequestHeader String username, @RequestHeader String password){
+        return serviceMT.getToken(username, password);
     }
 
 

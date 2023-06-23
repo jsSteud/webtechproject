@@ -39,7 +39,7 @@ class ServiceTests {
 
 		doReturn(List.of(exercise_1, exercise_2)).when(repository).findAll();
 
-		List<Exercise> list = service.getAll();
+		List<Exercise> list = service.getAll("");
 
 		assertEquals(List.of(exercise_1,exercise_2), list);
 
