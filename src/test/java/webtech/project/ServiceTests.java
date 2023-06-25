@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import webtech.project.entity.Exercise;
-import webtech.project.repository.TrainingWithMachineRepository;
+import webtech.project.repository.TrainingRepo;
 import webtech.project.service.TrainingWithMachineService;
 
 import java.util.List;
@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class ServiceTests {
@@ -25,7 +24,7 @@ class ServiceTests {
 	private TrainingWithMachineService service;
 
 	@MockBean
-	private TrainingWithMachineRepository repository;
+	private TrainingRepo repository;
 
 	@Test
 	@DisplayName("should return all exercises")

@@ -6,65 +6,63 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import webtech.project.entity.Account;
 import webtech.project.entity.Exercise;
-import webtech.project.repository.AccountRepo;
 import webtech.project.service.TrainingWithMachineService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class Controller {
 
     @Autowired
-    TrainingWithMachineService serviceMT;
+    TrainingWithMachineService service;
 
 
     Logger logger = LoggerFactory.getLogger(Controller.class);
 
     @GetMapping("/allsessions")
     public List<Exercise> gettAll(@RequestHeader String token){
-        return serviceMT.getAll(token);
+        return service.getAll(token);
     }
 
     @PutMapping("/addExercise")
     public Account addExerciseToAccount(@RequestHeader String token, @RequestBody Exercise exercise) {
-      return serviceMT.addExercisetoAccount(exercise, token);
+      return service.addExercisetoAccount(exercise, token);
     }
 
     @PostMapping("/account")
-    public Account createAccount(@RequestBody Account account) {return serviceMT.createAccount(account);}
+    public Account createAccount(@RequestBody Account account) {return service.createAccount(account);}
 
-    @GetMapping("/machinetraining")
+    @GetMapping("/training")
     public List<Exercise> getAllMachineTraining(@RequestHeader String token) {
-        return serviceMT.getAll(token);
+        return service.getAll(token);
     }
 
-    @PostMapping("/machinetraining")
+    @PostMapping("/training")
     public Exercise createMachineTraining(@RequestBody Exercise training) {
-        return serviceMT.save(training);
+        return service.save(training);
     }
-    @PutMapping("/machinetraining/{id}")
+    @PutMapping("/training/{id}")
     public Exercise updateExersice(@PathVariable Long id, @RequestBody Exercise training){
-        return serviceMT.updateExercise(id, training);
+        return service.updateExercise(id, training);
     }
     @PutMapping("/remove/{id}")
     public Exercise removeExercise(@PathVariable Long id, @RequestBody Exercise training){
-        return serviceMT.removeExercise(id, training);
+        return service.removeExercise(id, training);
     }
-    @DeleteMapping("/machinetraining/{id}")
+    @DeleteMapping("/training/{id}")
     public void deleteMachineTraining(@PathVariable Long id){
-        serviceMT.deleteById(id);
+        service.deleteById(id);
     }
 
     //TODO: Authoriazation needed
     @DeleteMapping("/deleteAll")
-    public void deleteAll(){
-        serviceMT.deleteAll();
+    public void deleteAll(@RequestHeader String auth){
+        service.deleteAll(auth);
     }
 
     @GetMapping("/login")
     public String getToken(@RequestHeader String username, @RequestHeader String password){
-        return serviceMT.getToken(username, password);
+        return service.getToken(username, password);
     }
 
 

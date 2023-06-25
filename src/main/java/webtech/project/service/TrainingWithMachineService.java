@@ -1,27 +1,22 @@
 package webtech.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import webtech.project.entity.Account;
 import webtech.project.entity.Exercise;
 import webtech.project.repository.AccountRepo;
-import webtech.project.repository.TrainingWithMachineRepository;
+import webtech.project.repository.TrainingRepo;
 
-import java.nio.charset.Charset;
 import java.security.SecureRandom;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Random;
 
 import org.mindrot.jbcrypt.BCrypt;
 
 
-@Service
+@org.springframework.stereotype.Service
 public class TrainingWithMachineService {
 
     @Autowired
-    TrainingWithMachineRepository repo;
+    TrainingRepo repo;
 
     @Autowired
     AccountRepo accountRepo;
@@ -81,7 +76,6 @@ public class TrainingWithMachineService {
 
 
     public Exercise updateExercise(Long id, Exercise training) {
-        System.out.println(training);
         Exercise existing =  repo.findById(id).get();
 
         existing.setComment(training.getComment());
@@ -112,13 +106,15 @@ public class TrainingWithMachineService {
         if(!training.isFr()) existing.setFr(false);
         if(!training.isSa()) existing.setSa(false);
         if(!training.isSo()) existing.setSo(false);
+
         return repo.save(existing);
     }
 
 
 
-    public void deleteAll(){
-        repo.deleteAll();
+    public void deleteAll(String auth){
+        //actually not the best authorisation method
+        if (auth.equals("DELETEALLEXERCISES")) repo.deleteAll();
     }
 
     public Account createAccount(Account account) {

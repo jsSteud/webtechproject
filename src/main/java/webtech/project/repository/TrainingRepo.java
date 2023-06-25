@@ -5,4 +5,4 @@ import org.springframework.stereotype.Repository;
 import webtech.project.entity.Exercise;
 
 @Repository
-public interface TrainingWithMachineRepository extends CrudRepository<Exercise, Long> {}
+public interface TrainingRepo extends CrudRepository<Exercise, Long> {}
