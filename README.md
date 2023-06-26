@@ -1,4 +1,4 @@
-# webtechproject
+# webtechproject - backend
 
 ### Informationen
 
@@ -12,6 +12,46 @@
 
 ### Über das Projekt
 
-Es soll eine Webapplication gebaut werden, mit derer Hilfe ein Trainingsplan erstellt werden kann. Der Trainingsplan enthält dabei einzelne Trainingseinheiten, welche mit und ohne Geräte ausgeführt werden können.
+Gebaut wurde eine Trainingsplan Anwendung. 
 
-Weitere Spezifikationen und Features folgen...
+Zugehöriges Frontend: https://github.com/jsSteud/webtech-frontend
+
+## How to Log In / Sign up unter ``/login``
+
+1. Registrieren
+2. Alternative Credential:
+
+    ``username: testuser``
+
+    ``password: testpassword``
+
+## How to use the application
+
+Es gibt 3 Pfade:
+1. ``/plan``
+   2. Plan
+   3. Übungen zum Plan hinzügen
+   4. Übungen aus Plan entfernen
+2. ``/exercises``
+   3. Übungen bearbeiten
+      4. Name, Kommentar, Sets, Gewichte etc....
+   5. Übungen löschen
+3. ``/createnew``
+   4. Neue Übung erstellen
+
+Alle sind über die NavBar zu erreichen.
+
+## Allgemeine Hinweise
+
+Die erstellten Übungen sind nur im entsprechenden Account zugänglich.
+
+Der LogIn ist nur über einen (1!) Browser zugängig.
+
+
+## Technische Hinweise 
+
+Der Login wird über einen Session-Token realisiert, welcher gehasht in der Datenbank liegt. Der Token wird nach erfolgreicher Eingabe
+von ``username`` und ``password`` serverseitig generiert und an den Client zurückgegeben. Findet von einem anderen Browser ein Login mit korrekten Credentials
+statt, wird ein neuer Token generiert: der alte verfällt und wird ungültig.
+
+``username`` und ``password``werden gehasht in der Datenbank gespeichert.
