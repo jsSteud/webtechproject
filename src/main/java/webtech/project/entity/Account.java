@@ -15,6 +15,17 @@ public class Account {
     private List<Exercise> exerciseList;
     private String token;
 
+    public Account(String username, String password, List<Exercise> exerciseList, String token) {
+        this.username = username;
+        this.password = password;
+        this.exerciseList = exerciseList;
+        this.token = token;
+    }
+
+    public Account() {
+
+    }
+
     public String getToken() {
         return token;
     }
