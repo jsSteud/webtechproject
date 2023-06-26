@@ -54,7 +54,6 @@ public class Controller {
         service.deleteById(id);
     }
 
-    //TODO: Authoriazation needed
     @DeleteMapping("/deleteAll")
     public void deleteAll(@RequestHeader String auth){
         service.deleteAll(auth);
@@ -63,6 +62,11 @@ public class Controller {
     @GetMapping("/login")
     public String getToken(@RequestHeader String username, @RequestHeader String password){
         return service.getToken(username, password);
+    }
+
+    @PutMapping("/removetoken/{token}")
+    public void removeToken(@PathVariable String token){
+        service.removeToken(token);
     }
 
 

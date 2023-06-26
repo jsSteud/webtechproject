@@ -35,7 +35,7 @@ public class TrainingWithMachineService {
         final Long[] accountId = new Long[1];
 
         accounts.forEach(account -> {
-            if (BCrypt.checkpw(token, account.getToken())) accountId[0] = account.getId();
+            if (account.getToken() != null && BCrypt.checkpw(token, account.getToken())) accountId[0] = account.getId();
         });
 
         Account finalAccount = accountRepo.findById(accountId[0]).orElseThrow();
@@ -119,6 +119,15 @@ public class TrainingWithMachineService {
 
     public Account createAccount(Account account) {
 
+        Iterable<Account> accounts = accountRepo.findAll();
+        List<Account> accountList = (List<Account>) accounts;
+
+        //checks if username exists
+        for (int i = 0; i < accountList.size(); i++) {
+            String hashedUsername = accountList.get(i).getUsername();
+            if (BCrypt.checkpw(account.getUsername(), hashedUsername)) return null;
+        }
+
         String hashedUsername = BCrypt.hashpw(account.getUsername(), BCrypt.gensalt());
         String hashedPassword = BCrypt.hashpw(account.getPassword(), BCrypt.gensalt());
 
@@ -133,7 +142,7 @@ public class TrainingWithMachineService {
         Iterable<Account> accounts = accountRepo.findAll();
         final Account[] account = new Account[1];
         accounts.forEach(account1 -> {
-            if (BCrypt.checkpw(token, account1.getToken())){
+            if (account1.getToken() != null && BCrypt.checkpw(token, account1.getToken())){
                 account[0] = account1;
             }
         });
@@ -150,10 +159,10 @@ public class TrainingWithMachineService {
             if (BCrypt.checkpw(username, account.getUsername())) {
                 if (BCrypt.checkpw(password, account.getPassword())) {
                     return createToken(account.getId());
-                }
+                } else return "wrongpassword";
             }
         }
-        return null;
+        return "userdoesntexist";
     }
 
     public String createToken(Long id) {
@@ -194,4 +203,14 @@ public class TrainingWithMachineService {
         return sb.toString();
     }
 
+    public void removeToken(String token) {
+        Iterable<Account> a = accountRepo.findAll();
+        final Account[] acc = new Account[1];
+        a.forEach(account -> {
+            if(BCrypt.checkpw(token, account.getToken())) acc[0] = account;
+        });
+        acc[0].setToken(null);
+        accountRepo.save(acc[0]);
+
+    }
 }
