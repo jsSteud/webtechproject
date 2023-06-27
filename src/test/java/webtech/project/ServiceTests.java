@@ -15,10 +15,10 @@ import webtech.project.service.TrainingWithMachineService;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
+import static org.springframework.test.util.AssertionErrors.assertNotNull;
 
 @SpringBootTest
 class ServiceTests {
@@ -43,6 +43,8 @@ class ServiceTests {
 
 	Account account_1 = new Account(BCrypt.hashpw("username_1", BCrypt.gensalt(10)), BCrypt.hashpw("password_1", BCrypt.gensalt(10)),List.of(exercise_1, exercise_2, exercise_3), BCrypt.hashpw("token_1",BCrypt.gensalt(10)));
 	Account account_2 = new Account(BCrypt.hashpw("username_2", BCrypt.gensalt(10)), BCrypt.hashpw("password_2", BCrypt.gensalt(10)),List.of(exercise_4), BCrypt.hashpw("token_2", BCrypt.gensalt(10)));
+
+	Account newAccount = new Account("username", "password", null, null);
 
 
 
@@ -89,24 +91,38 @@ class ServiceTests {
 
 	}
 
-	//TODO:
-//	@Test
-//	@DisplayName("Should create an account, where username doesn't exist yet")
-//	void createAccountTest() {
-//
-//		account_1.setId(1L);
-//		account_2.setId(2L);
-//	doReturn(List.of(account_1, account_2)).when(accountRepo).findAll();
-//
-//	Account newAccount = service.createAccount(new Account("username_3", "password_3", null, null));
-//
-//	Account expected = new Account(BCrypt.hashpw("username_3", BCrypt.gensalt(10)), BCrypt.hashpw("password_3", BCrypt.gensalt(10)), List.of(), null);
-//
-//	assertEquals(expected, newAccount);
-//
-//
-//	}
-//
+	@Test
+	@DisplayName("Should create an account, where username doesn't exist yet")
+	void createAccountTest() {
+
+
+
+		doReturn(List.of()).when(accountRepo).findAll();
+		doReturn(newAccount).when(accountRepo).save(newAccount);
+
+		Account toSafeAccound = service.createAccount(newAccount);
+
+		// Verify that the account is saved with hashed username and password
+		assertNotEquals("username", toSafeAccound.getUsername());
+		assertNotEquals("password", toSafeAccound.getPassword());
+
+		// Verify that the hashed username and password are correct
+		assertTrue(BCrypt.checkpw("username", toSafeAccound.getUsername()));
+		assertTrue(BCrypt.checkpw("password", toSafeAccound.getPassword()));
+	}
+
+	@Test
+	@DisplayName("Should return null id account username allready exists")
+	void createAccountTest_2(){
+
+		Account newAccountWhereUsernameAlreadyExists = new Account("username_1", "password", null, null);
+
+		doReturn(List.of(account_1, account_2)).when(accountRepo).findAll();
+
+		Account toSafedAccount = service.createAccount(newAccount);
+
+		assertEquals(null, toSafedAccount);
+	}
 
 
 }
