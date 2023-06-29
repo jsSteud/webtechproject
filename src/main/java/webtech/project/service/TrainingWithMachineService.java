@@ -66,7 +66,7 @@ public class TrainingWithMachineService {
                 }
             });
         });
-        //All Exercises for the on account OLD (untill with the, to delete, exercise)
+        //All Exercises for the on account OLD (still with the, to delete, exercise)
         List<Exercise> foundedExercises = foundedAccount[0].getExerciseList();
         //remove exercise
         foundedExercises.remove(foundedExercise[0]);

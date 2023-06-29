@@ -115,6 +115,7 @@ class ServiceTests {
 	@DisplayName("Should return null id account username allready exists")
 	void createAccountTest_2(){
 
+		//username "username_1" allready exists
 		Account newAccountWhereUsernameAlreadyExists = new Account("username_1", "password", null, null);
 
 		doReturn(List.of(account_1, account_2)).when(accountRepo).findAll();
