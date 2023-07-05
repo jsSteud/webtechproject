@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="webtech.project.ServiceTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-06-27T10:19:45" hostname="macbook.local" time="0.366">
+<testsuite name="webtech.project.ServiceTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-07-05T21:42:18" hostname="macbook.local" time="2.343">
   <properties/>
-  <testcase name="Should return null id account username allready exists" classname="webtech.project.ServiceTests" time="0.366"/>
-  <system-out><![CDATA[12:19:39.805 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Neither @ContextConfiguration nor @ContextHierarchy found for test class [ServiceTests]: using SpringBootContextLoader
-12:19:39.812 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader -- Could not detect default resource locations for test class [webtech.project.ServiceTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-12:19:39.813 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [webtech.project.ServiceTests]: ServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-12:19:39.852 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using ContextCustomizers for test class [ServiceTests]: [DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer, ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer]
-12:19:39.963 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider -- Identified candidate component class: file [/Users/jaschasteudler/Desktop/virtual-desktop/university/Module/Current/Prog3/webtechproject/build/classes/java/main/webtech/project/ProjectApplication.class]
-12:19:39.968 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration webtech.project.ProjectApplication for test class webtech.project.ServiceTests
-12:19:40.042 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using TestExecutionListeners for test class [ServiceTests]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener, ResetMocksTestExecutionListener]
-12:19:40.043 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener -- Before test class: class [ServiceTests], class annotated with @DirtiesContext [false] with mode [null]
+  <testcase name="should update exercise" classname="webtech.project.ServiceTests" time="0.064"/>
+  <testcase name="should return all exercises of Account_1" classname="webtech.project.ServiceTests" time="0.187"/>
+  <testcase name="Should return null id account username allready exists" classname="webtech.project.ServiceTests" time="0.32"/>
+  <testcase name="Should create an account, where username doesn't exist yet" classname="webtech.project.ServiceTests" time="0.323"/>
+  <system-out><![CDATA[23:42:12.911 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Neither @ContextConfiguration nor @ContextHierarchy found for test class [ServiceTests]: using SpringBootContextLoader
+23:42:12.920 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader -- Could not detect default resource locations for test class [webtech.project.ServiceTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+23:42:12.920 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [webtech.project.ServiceTests]: ServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:42:12.966 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using ContextCustomizers for test class [ServiceTests]: [DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer, ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer]
+23:42:13.096 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider -- Identified candidate component class: file [/Users/jaschasteudler/Desktop/virtual-desktop/university/Module/Current/Prog3/webtechproject/build/classes/java/main/webtech/project/ProjectApplication.class]
+23:42:13.101 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration webtech.project.ProjectApplication for test class webtech.project.ServiceTests
+23:42:13.214 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Using TestExecutionListeners for test class [ServiceTests]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener, ResetMocksTestExecutionListener]
+23:42:13.216 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener -- Before test class: class [ServiceTests], class annotated with @DirtiesContext [false] with mode [null]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -19,20 +22,20 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.0.5)
 
-2023-06-27T12:19:40.937+02:00  INFO 31612 --- [    Test worker] webtech.project.ServiceTests             : Starting ServiceTests using Java 17.0.4.1 with PID 31612 (started by jaschasteudler in /Users/jaschasteudler/Desktop/virtual-desktop/university/Module/Current/Prog3/webtechproject)
-2023-06-27T12:19:40.939+02:00  INFO 31612 --- [    Test worker] webtech.project.ServiceTests             : The following 1 profile is active: "test"
-2023-06-27T12:19:41.940+02:00  INFO 31612 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-27T12:19:42.014+02:00  INFO 31612 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 2 JPA repository interfaces.
-2023-06-27T12:19:43.280+02:00  INFO 31612 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-06-27T12:19:43.439+02:00  INFO 31612 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:test user=SA
-2023-06-27T12:19:43.445+02:00  INFO 31612 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-06-27T12:19:43.544+02:00  INFO 31612 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-06-27T12:19:43.596+02:00  INFO 31612 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
-2023-06-27T12:19:43.761+02:00  INFO 31612 --- [    Test worker] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2023-06-27T12:19:44.394+02:00  INFO 31612 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-06-27T12:19:44.401+02:00  INFO 31612 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-27T12:19:44.449+02:00  WARN 31612 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-06-27T12:19:45.313+02:00  INFO 31612 --- [    Test worker] webtech.project.ServiceTests             : Started ServiceTests in 4.729 seconds (process running for 6.64)
+2023-07-05T23:42:14.079+02:00  INFO 83438 --- [    Test worker] webtech.project.ServiceTests             : Starting ServiceTests using Java 17.0.7 with PID 83438 (started by jaschasteudler in /Users/jaschasteudler/Desktop/virtual-desktop/university/Module/Current/Prog3/webtechproject)
+2023-07-05T23:42:14.081+02:00  INFO 83438 --- [    Test worker] webtech.project.ServiceTests             : The following 1 profile is active: "test"
+2023-07-05T23:42:15.087+02:00  INFO 83438 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-05T23:42:15.146+02:00  INFO 83438 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 2 JPA repository interfaces.
+2023-07-05T23:42:16.466+02:00  INFO 83438 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-05T23:42:16.637+02:00  INFO 83438 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:test user=SA
+2023-07-05T23:42:16.642+02:00  INFO 83438 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-05T23:42:16.742+02:00  INFO 83438 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-05T23:42:16.786+02:00  INFO 83438 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-07-05T23:42:16.958+02:00  INFO 83438 --- [    Test worker] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-07-05T23:42:17.615+02:00  INFO 83438 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-05T23:42:17.623+02:00  INFO 83438 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-05T23:42:17.677+02:00  WARN 83438 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-05T23:42:18.345+02:00  INFO 83438 --- [    Test worker] webtech.project.ServiceTests             : Started ServiceTests in 4.602 seconds (process running for 6.782)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
