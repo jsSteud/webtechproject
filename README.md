@@ -19,11 +19,11 @@ Zugehöriges Frontend: https://github.com/jsSteud/webtech-frontend
 ## How to Log In / Sign up unter ``/login``
 
 1. Registrieren
-2. Alternative Credential:
 
-    ``username: testuser``
+   **oder**
+2. Als Alternative gibt es einen Testuser -> bitte bei mir anfragen
 
-    ``password: testpassword``
+    
 
 ## How to use the application
 
