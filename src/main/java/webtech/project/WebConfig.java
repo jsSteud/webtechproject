@@ -13,6 +13,6 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedMethods("*")
-                .allowedOrigins("http://localhost:3000/", "http://localhost:8081/", "https://jssteud.github.io/", "https://jascha-steudler.de/");
+                .allowedOrigins("http://localhost:3000/", "http://localhost:8081/", "https://jssteud.github.io/", "https://jascha-steudler.de/", "https://webtech.jascha-steudler.de/");
     }
 }
